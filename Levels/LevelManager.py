@@ -16,7 +16,7 @@ class LevelManager():
         if p != None:
             self.p = p
 
-    # TODO (TASK 0) - Set up all levels and their corresponding sublevels.
+    # DONE (TASK 0) - Set up all levels and their corresponding sublevels.
     #   Each level should include a Small, Big, and Boss Blind, with Boss Blinds assigned unique names.
     #   Organize them in a dictionary structure where each key represents a level number.
     def setUpLevels(self): # Sets up all levels and sublevels
