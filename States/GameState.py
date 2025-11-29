@@ -910,8 +910,10 @@ class GameState(State):
         if len(self.cardsSelectedList) == 0:
             if removeFromHand:
                 self.draw()
-            self.update()
 
+
+            self.update()
+            self.updateCards(400, 520, self.cards, self.hand, scale=1.2)
             return
 
 
