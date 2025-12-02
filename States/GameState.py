@@ -862,19 +862,16 @@ class GameState(State):
     def discardCards(self, removeFromHand: bool):
         if len(self.cardsSelectedList) == 0:
             if removeFromHand:
-                self.draw()
-
-
-            self.update()
+                num_to_draw = 8 - len(self.hand)
+                new_cards = State.deckManager.dealCards(self.deck, min(num_to_draw, len(self.deck)))
+                self.hand.extend(new_cards)
             self.updateCards(400, 520, self.cards, self.hand, scale=1.2)
             return
-
 
         if removeFromHand:
             card = self.cardsSelectedList.pop(0)
             if card in self.hand:
                 self.hand.remove(card)
-
 
         self.discardCards(removeFromHand)
 
