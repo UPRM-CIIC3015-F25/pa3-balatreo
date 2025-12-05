@@ -14,7 +14,7 @@ class PlanetCard:
     def sellPrice(self):
         return int(self.price * 0.6)
 
-# TODO (TASK 6.1): Implement the Planet Card system for Balatro.
+# Done (TASK 6.1): Implement the Planet Card system for Balatro.
 #   Create a dictionary called PLANETS that stores all available PlanetCard objects.
 #   Each entry should use the planet's name as the key and a PlanetCard instance as the value.
 #   Each PlanetCard must include:
@@ -29,5 +29,13 @@ class PlanetCard:
 #   These cards will be used in the shop and gameplay systems to upgrade specific poker hands.
 
 PLANETS = {
-
+    "Mercury": PlanetCard("Mercury","Increases High Card hand value by +1 Mult and +10 Chips",2,10,1),
+    "Venus": PlanetCard("Venus","Increases One Pair hand by +1 Mult and +15 Chips",2,15,1),
+    "Earth": PlanetCard("Earth","Increases Two Pair hand value by +2 Mult and +15 Chips",2,15,2),
+    "Mars": PlanetCard("Mars","Increases Three of a kind hand value by +2 Mult and +25 Chips",2,25,2),
+    "Jupiter":PlanetCard("Jupiter","Increases Straight hand value by +3 Mult and +25 Chips",3,25,3),
+    "Saturn": PlanetCard("Saturn","Increases Flush hand value by +3 Mult and +30 Chips",3,30,3),
+    "Uranus": PlanetCard("Uranus", "Increases Full House hand value by +3 Mult and +35 Chips",3,35,3),
+    "Neptune": PlanetCard("Neptune", "Increases Full Four of a Kind hand value by +4 Mult and +40 Chips",3,40,4),
+    "Sun": PlanetCard("Sun", "Increases all hands value by +2 Mult and +30 Chips",12,30,2)
 }
