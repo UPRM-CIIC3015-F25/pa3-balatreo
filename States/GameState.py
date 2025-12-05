@@ -524,7 +524,7 @@ class GameState(State):
                         self.deselect_sfx.play()
                     return  # Stop after interacting with one card
 
-    # TODO (TASK 7) - Rewrite this function so that it calculates the player's gold reward *recursively*.
+    # DONE (TASK 7) - Rewrite this function so that it calculates the player's gold reward *recursively*.
     #   The recursion should progress through each step of the reward process (base reward, bonus for overkill, etc.)
     #   by calling itself with updated parameters or stages instead of using loops.
     #   Each recursive call should handle a single part of the reward logic, and the final base case should
@@ -535,7 +535,30 @@ class GameState(State):
     #     - A clear base case to stop recursion when all parts are done
     #   Avoid any for/while loops — recursion alone must handle the repetition.
     def calculate_gold_reward(self, playerInfo, stage=0):
+        if stage == 0:
+            if playerInfo.score == playerInfo.roundScore:
+                if playerInfo.levelManager.curSubLevel.blind.name == "SMALL":
+                    return 4
+                elif playerInfo.levelManager.curSubLevel.blind.name == "BIG":
+                    return 8
+                elif playerInfo.levelManager.curSubLevel.bossLevel == "":
+                    return 10
+            elif playerInfo.roundScore > playerInfo.score:
+                if playerInfo.levelManager.curSubLevel.blind.name == "SMALL":
+                    return 4 + self.calculate_gold_reward(playerInfo, stage=1)
+                elif playerInfo.levelManager.curSubLevel.blind.name == "BIG":
+                    return 8 + self.calculate_gold_reward(playerInfo, stage=1)
+                elif playerInfo.levelManager.curSubLevel.bossLevel == "":
+                    return 10 + self.calculate_gold_reward(playerInfo, stage=1)
+            return None
+        elif stage == 1:
+            score = playerInfo.roundScore
+            target = playerInfo.score
+            bonus = int(round((min(5, max(0, (((score - target)/ target) * 5)))), 0))
+            return bonus + self.calculate_gold_reward(playerInfo, stage=2)
+        else:
             return 0
+# DONE (TASK 7) (Teammate A: Adrián E. Quiñones Pérez)
 
     def updateCards(self, posX, posY, cardsDict, cardsList, scale=1.5, spacing=90, baseYOffset=-20, leftShift=40):
         cardsDict.clear()
