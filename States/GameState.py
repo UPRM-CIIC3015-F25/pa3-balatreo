@@ -541,14 +541,14 @@ class GameState(State):
                     return 4
                 elif playerInfo.levelManager.curSubLevel.blind.name == "BIG":
                     return 8
-                elif playerInfo.levelManager.curSubLevel.bossLevel == "":
+                elif playerInfo.levelManager.curSubLevel.blind.name == "BOSS":
                     return 10
             elif playerInfo.roundScore > playerInfo.score:
                 if playerInfo.levelManager.curSubLevel.blind.name == "SMALL":
                     return 4 + self.calculate_gold_reward(playerInfo, stage=1)
                 elif playerInfo.levelManager.curSubLevel.blind.name == "BIG":
                     return 8 + self.calculate_gold_reward(playerInfo, stage=1)
-                elif playerInfo.levelManager.curSubLevel.bossLevel == "":
+                elif playerInfo.levelManager.curSubLevel.bossLevel == "BOSS":
                     return 10 + self.calculate_gold_reward(playerInfo, stage=1)
             return None
         elif stage == 1:
