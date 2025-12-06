@@ -829,7 +829,7 @@ class GameState(State):
 
         # ------------------- Apply Joker effects -------------------
         owned = set(self.playerJokers)
-        # TODO (TASK 5.2): Let the Joker mayhem begin! Implement each Joker’s effect using the Joker table as reference.
+        # Done (TASK 5.2): Let the Joker mayhem begin! Implement each Joker’s effect using the Joker table as reference.
         #   Follow this structure for consistency:
         #   if "joker card name" in owned:
         #       # Apply that Joker’s effect
@@ -885,7 +885,7 @@ class GameState(State):
             self.activated_jokers.add("? Block")
         if "Hogwarts" in owned:
             for card in self.cardsSelectedList:
-                for rank in self.cardsSelectedList[card]:
+                for rank in self.cardsSelectedList:
                     if rank == 'Ace':
                         hand_mult += 4
                         hand_chips += 20
