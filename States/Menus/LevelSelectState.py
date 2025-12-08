@@ -103,15 +103,15 @@ class LevelSelectState(State):
 
                 if nxt == "The Needle":
                     self.playerInfo.amountOfHands = 1
-                    return
+
 
                 if nxt == "The Water":
                     self.playerInfo.amountOfDiscards = 0
-                    return
+
 
                 if nxt == "The Manacle":
                     self.playerInfo.amountOfHands -= 1
-                    return
+
 
 
     def drawLevelCards(self):
