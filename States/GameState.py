@@ -842,18 +842,15 @@ class GameState(State):
             hand_mult += random.randint(0,23)
             self.activated_jokers.add("Micheal Myers")
         if "Fibonacci" in owned:
-            for card in self.cardsSelectedList:
-                for rank in by_rank:
-                    if rank == 'Ace':
-                        hand_mult += 8
-                    if rank == '2':
-                        hand_mult += 8
-                    if rank == '3':
-                        hand_mult += 8
-                    if rank == '5':
-                        hand_mult += 8
-                    if rank == '8':
-                        hand_mult += 8
+            count = 0
+            for card in sel:
+                if card.rank == Rank.ACE or card.rank == Rank.TWO or card.rank == Rank.THREE or card.rank == Rank.FIVE or card.rank == Rank.EIGHT:
+                    count += 1
+            if count > 0:
+                bonus_multiplier = 4 * count
+                hand_mult += bonus_multiplier
+                bonus_chips = 20 * count
+                total_chips += bonus_chips
             self.activated_jokers.add("Fibonacci")
         if "Gauntlet" in owned:
             total_chips += 250
