@@ -854,18 +854,13 @@ class GameState(State):
                         hand_mult += 8
                     if rank == '8':
                         hand_mult += 8
-                return hand_mult
             self.activated_jokers.add("Fibonacci")
         if "Gauntlet" in owned:
             total_chips += 250
-            self.playerInfo.amountOfHands -= 2
+            self.playerInfo.amountOfHands = max(0, self.playerInfo.amountOfHands - 2)
             self.activated_jokers.add("Gauntlet")
         if "Ogre" in owned:
-            count = 0
-            for joker in owned:
-                count += 1
-                return
-            hand_mult += 3 + count
+            hand_mult += 3 + len(self.playerJokers)
             self.activated_jokers.add("Ogre")
         if "Straw Hat" in owned:
             starting_hands = 4
@@ -884,12 +879,16 @@ class GameState(State):
                 hand_chips += 4
             self.activated_jokers.add("? Block")
         if "Hogwarts" in owned:
-            for card in self.cardsSelectedList:
-                for rank in self.cardsSelectedList:
-                    if rank == 'Ace':
-                        hand_mult += 4
-                        hand_chips += 20
-            self.activated_jokers.add("Hogwarts")
+            ace_count = 0
+            for card in sel:
+                if card.rank == Rank.ACE:
+                    ace_count += 1
+            if ace_count > 0:
+                bonus_multiplier = 4 * ace_count
+                hand_mult += bonus_multiplier
+                bonus_chips = 20 * ace_count
+                total_chips += bonus_chips
+                self.activated_jokers.add("Hogwarts")
         if "802" in owned:
             if self.playerInfo.amountOfHands == 0:
                 hand_mult *= 2

@@ -107,11 +107,10 @@ class ShopState(State):
                         HAND_SCORES[key]['multiplier'] += planet.mult
                         HAND_SCORES[key]['level'] += 1
                         break
-            else:
-                for j in keys:
-                    HAND_SCORES[j]['chips'] += planet.chips
-                    HAND_SCORES[j]['multiplier'] += planet.mult
-                    HAND_SCORES[j]['level'] += 1
+                    else:
+                        HAND_SCORES[key]['chips'] += planet.chips
+                        HAND_SCORES[key]['multiplier'] += planet.mult
+                        HAND_SCORES[key]['level'] += 1
 
     # ---------- Helpers ----------
     def _wrap_lines(self, text, font, max_width):
