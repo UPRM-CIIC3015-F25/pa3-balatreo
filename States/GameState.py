@@ -845,12 +845,7 @@ class GameState(State):
             count = 0
             for card in sel:
                 if card.rank == Rank.ACE or card.rank == Rank.TWO or card.rank == Rank.THREE or card.rank == Rank.FIVE or card.rank == Rank.EIGHT:
-                    count += 1
-            if count > 0:
-                bonus_multiplier = 4 * count
-                hand_mult += bonus_multiplier
-                bonus_chips = 20 * count
-                total_chips += bonus_chips
+                    hand_mult += 8
             self.activated_jokers.add("Fibonacci")
         if "Gauntlet" in owned:
             total_chips += 250
