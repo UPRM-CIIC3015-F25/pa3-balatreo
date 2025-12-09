@@ -594,7 +594,7 @@ class GameState(State):
 
 
                     elif c2.rank == c1.rank:
-                        if suitOrder.index(c2.suit) < suitOrder.index(c1.suit):
+                        if suitOrder.index(c2.suit) > suitOrder.index(c1.suit):
                             self.hand[i], self.hand[j] = self.hand[j], self.hand[i]
 
 
@@ -606,7 +606,7 @@ class GameState(State):
 
 
                     elif c2.suit == c1.suit:
-                        if c2.rank.value < c1.rank.value:
+                        if c2.rank.value > c1.rank.value:
                             self.hand[i], self.hand[j] = self.hand[j], self.hand[i]
 
 
@@ -937,4 +937,4 @@ class GameState(State):
         self.discardCards(removeFromHand)
 
 
-        self.updateCards(400, 520, self.cards, self.hand, scale=1.2)
+
