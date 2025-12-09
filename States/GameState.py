@@ -838,7 +838,7 @@ class GameState(State):
         if "The Joker" in owned:
             hand_mult += 4
             self.activated_jokers.add("The Joker")
-        if "Micheal Myers" in owned:
+        if "Michael Myers" in owned:
             hand_mult += random.randint(0,23)
             self.activated_jokers.add("Micheal Myers")
         if "Fibonacci" in owned:
@@ -852,7 +852,7 @@ class GameState(State):
             self.playerInfo.amountOfHands = max(0, self.playerInfo.amountOfHands - 2)
             self.activated_jokers.add("Gauntlet")
         if "Ogre" in owned:
-            hand_mult += 3 + len(self.playerJokers)
+            hand_mult += 3 * len(self.playerJokers)
             self.activated_jokers.add("Ogre")
         if "Straw Hat" in owned:
             starting_hands = 4
