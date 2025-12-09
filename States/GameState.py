@@ -824,7 +824,7 @@ class GameState(State):
         for c in used_cards:
             card_chips_sum += c.chips
 
-        # total chips for display = base hand value + sum of used Cards' chips
+        # total chips for display = base hand value + sum of used Cards' chips  
         total_chips = hand_chips + card_chips_sum
 
         # ------------------- Apply Joker effects -------------------
