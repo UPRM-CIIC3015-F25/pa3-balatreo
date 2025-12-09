@@ -101,17 +101,12 @@ class LevelSelectState(State):
                 self.nextState = "GameState"
                 self.buttonSound.play()
 
-                if nxt == "The Needle":
+                if nxt.bossLevel == "The Needle":
                     self.playerInfo.amountOfHands = 1
-
-
-                if nxt == "The Water":
+                if nxt.bossLevel == "The Water":
                     self.playerInfo.amountOfDiscards = 0
-
-
-                if nxt == "The Manacle":
+                if nxt.bossLevel == "The Manacle":
                     self.playerInfo.amountOfHands -= 1
-
 
 
     def drawLevelCards(self):
