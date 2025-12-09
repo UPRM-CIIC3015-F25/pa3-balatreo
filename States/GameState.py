@@ -589,7 +589,7 @@ class GameState(State):
 
                 if sort_by == "rank":
 
-                    if c2.rank.value < c1.rank.value:
+                    if c2.rank.value > c1.rank.value:
                         self.hand[i], self.hand[j] = self.hand[j], self.hand[i]
 
 
@@ -601,7 +601,7 @@ class GameState(State):
 
                 elif sort_by == "suit":
                     # Compare suits first
-                    if suitOrder.index(c2.suit) < suitOrder.index(c1.suit):
+                    if suitOrder.index(c2.suit) > suitOrder.index(c1.suit):
                         self.hand[i], self.hand[j] = self.hand[j], self.hand[i]
 
 
